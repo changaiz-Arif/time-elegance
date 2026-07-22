@@ -150,7 +150,7 @@ function ProductDetail() {
             <div className="space-y-4">
               <p>{product.description}</p>
               <ul className="list-disc space-y-1 pl-5">
-                {product.features.map((f) => <li key={f}>{f}</li>)}
+                {product.features.map((f: string) => <li key={f}>{f}</li>)}
               </ul>
             </div>
           )}
@@ -158,7 +158,7 @@ function ProductDetail() {
             <table className="w-full text-left">
               <tbody>
                 {Object.entries(product.specifications).map(([k, v]) => (
-                  <tr key={k} className="border-b border-border last:border-0"><th className="w-1/3 py-3 font-medium text-foreground">{k}</th><td className="py-3">{v}</td></tr>
+                  <tr key={k} className="border-b border-border last:border-0"><th className="w-1/3 py-3 font-medium text-foreground">{k}</th><td className="py-3">{String(v)}</td></tr>
                 ))}
               </tbody>
             </table>
