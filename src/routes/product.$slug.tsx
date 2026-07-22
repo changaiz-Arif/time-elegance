@@ -2,7 +2,7 @@ import { createFileRoute, Link, notFound, useNavigate } from "@tanstack/react-ro
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Star, Heart, ShoppingBag, Minus, Plus, ShieldCheck, Truck, RefreshCcw } from "lucide-react";
-import { getProduct, getRelated } from "@/lib/products";
+import { getProduct, getRelated, type Product } from "@/lib/products";
 import { useCart, useWishlist } from "@/lib/store";
 import { ProductCard } from "@/components/ProductCard";
 import { WatchViewer3D } from "@/components/WatchViewer3D";
@@ -35,7 +35,7 @@ export const Route = createFileRoute("/product/$slug")({
 });
 
 function ProductDetail() {
-  const { product } = Route.useLoaderData();
+  const { product } = Route.useLoaderData() as { product: Product };
   const [qty, setQty] = useState(1);
   const [zoom, setZoom] = useState(false);
   const [tab, setTab] = useState<"desc" | "specs" | "reviews">("desc");
