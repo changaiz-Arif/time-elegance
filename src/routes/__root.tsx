@@ -11,8 +11,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
+import { Toaster } from "sonner";
 
 function NotFoundComponent() {
   return (
@@ -79,11 +78,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Chronova — Premium Watches, Modern Craftsmanship" },
-      { name: "description", content: "Discover premium automatic, diver, chronograph and dress watches. Free shipping, 2-year warranty, curated for the modern connoisseur." },
-      { name: "author", content: "Chronova" },
-      { property: "og:title", content: "Chronova — Premium Watches" },
-      { property: "og:description", content: "Timepieces engineered for the modern connoisseur." },
+      { title: "Stickies — Beautiful sticky notes in your browser" },
+      { name: "description", content: "A fast, minimal sticky-notes app with voice-to-text, colors, pinning, archiving, and offline local storage." },
+      { name: "author", content: "Stickies" },
+      { property: "og:title", content: "Stickies — Sticky Notes" },
+      { property: "og:description", content: "Capture ideas fast. Local, private, beautiful." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -120,13 +119,8 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="flex min-h-screen flex-col">
-        <Header />
-        <main className="flex-1">
-          <Outlet />
-        </main>
-        <Footer />
-      </div>
+      <Outlet />
+      <Toaster position="bottom-center" richColors closeButton />
     </QueryClientProvider>
   );
 }
